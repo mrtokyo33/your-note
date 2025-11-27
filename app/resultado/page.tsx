@@ -113,13 +113,13 @@ export default function ResultadoPage() {
 
   const getMessageColor = () => {
     if (result.message.includes('PASSOU')) return 'from-green-400 to-emerald-600';
-    if (result.message.includes('ficou de recuperação no terceiro')) return 'from-yellow-400 to-orange-600';
+    if (result.message.includes('TRIMESTRE')) return 'from-yellow-400 to-orange-600';
     return 'from-red-400 to-red-600';
   };
 
   const getGlowColor = () => {
     if (result.message.includes('PASSOU')) return 'shadow-green-500/75';
-    if (result.message.includes('ficou de recuperação no terceiro')) return 'shadow-yellow-500/75';
+    if (result.message.includes('TRIMESTRE')) return 'shadow-yellow-500/75';
     return 'shadow-red-500/75';
   };
 

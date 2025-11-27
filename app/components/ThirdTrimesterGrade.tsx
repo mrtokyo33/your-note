@@ -13,6 +13,7 @@ interface ThirdTrimesterGradeProps {
   onQualitativaChange: (value: string) => void;
   simulado: string;
   onSimuladoChange: (value: string) => void;
+  errors?: Record<string, string>;
 }
 
 const InputField = ({ label, value, onChange }: { label: string; value: string; onChange: (value: string) => void }) => {
@@ -51,6 +52,7 @@ export function ThirdTrimesterGrade({
   onQualitativaChange,
   simulado,
   onSimuladoChange,
+  errors = {},
 }: ThirdTrimesterGradeProps) {
   return (
     <div className="bg-white/5 backdrop-blur-md rounded-xl p-6 border border-purple-500/30 hover:border-purple-500/50 transition-all">
@@ -58,11 +60,26 @@ export function ThirdTrimesterGrade({
         NOTA TERCEIRO TRIMESTRE:
       </h2>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <InputField label="Mensa" value={mensa} onChange={onMensaChange} />
-        <InputField label="Trimestral" value={trimestral} onChange={onTrimestralChange} />
-        <InputField label="Diversificada" value={diversificada} onChange={onDiversificadaChange} />
-        <InputField label="Qualitativa" value={qualitativa} onChange={onQualitativaChange} />
-        <InputField label="Simulado" value={simulado} onChange={onSimuladoChange} />
+        <div>
+          <InputField label="Mensa" value={mensa} onChange={onMensaChange} />
+          {errors.mensa && <p className="text-red-400 text-sm mt-1">{errors.mensa}</p>}
+        </div>
+        <div>
+          <InputField label="Trimestral" value={trimestral} onChange={onTrimestralChange} />
+          {errors.trimestral && <p className="text-red-400 text-sm mt-1">{errors.trimestral}</p>}
+        </div>
+        <div>
+          <InputField label="Diversificada" value={diversificada} onChange={onDiversificadaChange} />
+          {errors.diversificada && <p className="text-red-400 text-sm mt-1">{errors.diversificada}</p>}
+        </div>
+        <div>
+          <InputField label="Qualitativa" value={qualitativa} onChange={onQualitativaChange} />
+          {errors.qualitativa && <p className="text-red-400 text-sm mt-1">{errors.qualitativa}</p>}
+        </div>
+        <div>
+          <InputField label="Simulado" value={simulado} onChange={onSimuladoChange} />
+          {errors.simulado && <p className="text-red-400 text-sm mt-1">{errors.simulado}</p>}
+        </div>
       </div>
     </div>
   );

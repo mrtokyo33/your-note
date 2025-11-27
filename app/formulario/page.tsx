@@ -26,11 +26,47 @@ export default function FormPage() {
     if (!subject.trim()) {
       newErrors.subject = 'Digite a matéria';
     }
+
+    // Validações obrigatórias e de limites
     if (!firstTrimester) {
       newErrors.firstTrimester = 'Obrigatório';
+    } else {
+      const first = parseFloat(firstTrimester);
+      if (first < 0 || first > 10) {
+        newErrors.firstTrimester = 'Deve estar entre 0 e 10';
+      }
     }
+
     if (!secondTrimester) {
       newErrors.secondTrimester = 'Obrigatório';
+    } else {
+      const second = parseFloat(secondTrimester);
+      if (second < 0 || second > 10) {
+        newErrors.secondTrimester = 'Deve estar entre 0 e 10';
+      }
+    }
+
+    // Validar terceiro trimestre
+    const mensa = parseFloat(thirdTrimesterMensa) || 0;
+    const trimestral = parseFloat(thirdTrimesterTrimestral) || 0;
+    const diversificada = parseFloat(thirdTrimesterDiversificada) || 0;
+    const qualitativa = parseFloat(thirdTrimesterQualitativa) || 0;
+    const simulado = parseFloat(thirdTrimesterSimulado) || 0;
+
+    if (mensa < 0 || mensa > 3) {
+      newErrors.mensa = 'Deve estar entre 0 e 3';
+    }
+    if (trimestral < 0 || trimestral > 4) {
+      newErrors.trimestral = 'Deve estar entre 0 e 4';
+    }
+    if (diversificada < 0 || diversificada > 1) {
+      newErrors.diversificada = 'Deve estar entre 0 e 1';
+    }
+    if (qualitativa < 0 || qualitativa > 1) {
+      newErrors.qualitativa = 'Deve estar entre 0 e 1';
+    }
+    if (simulado < 0 || simulado > 1) {
+      newErrors.simulado = 'Deve estar entre 0 e 1';
     }
 
     setErrors(newErrors);
@@ -135,7 +171,7 @@ export default function FormPage() {
             value={secondTrimester}
             onChange={setSecondTrimester}
             max={10}
-            error={errors.secondTrimestre}
+            error={errors.secondTrimester}
           />
 
           {/* Terceiro Trimestre */}
@@ -144,36 +180,51 @@ export default function FormPage() {
               NOTA TERCEIRO TRIMESTRE:
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <GradeInput
-                label="Mensa"
-                value={thirdTrimesterMensa}
-                onChange={setThirdTrimesterMensa}
-                max={3}
-              />
-              <GradeInput
-                label="Trimestral"
-                value={thirdTrimesterTrimestral}
-                onChange={setThirdTrimesterTrimestral}
-                max={4}
-              />
-              <GradeInput
-                label="Diversificada"
-                value={thirdTrimesterDiversificada}
-                onChange={setThirdTrimesterDiversificada}
-                max={1}
-              />
-              <GradeInput
-                label="Qualitativa"
-                value={thirdTrimesterQualitativa}
-                onChange={setThirdTrimesterQualitativa}
-                max={1}
-              />
-              <GradeInput
-                label="Simulado"
-                value={thirdTrimesterSimulado}
-                onChange={setThirdTrimesterSimulado}
-                max={1}
-              />
+              <div>
+                <GradeInput
+                  label="Mensa"
+                  value={thirdTrimesterMensa}
+                  onChange={setThirdTrimesterMensa}
+                  max={3}
+                />
+                {errors.mensa && <p className="text-red-400 text-sm mt-1">{errors.mensa}</p>}
+              </div>
+              <div>
+                <GradeInput
+                  label="Trimestral"
+                  value={thirdTrimesterTrimestral}
+                  onChange={setThirdTrimesterTrimestral}
+                  max={4}
+                />
+                {errors.trimestral && <p className="text-red-400 text-sm mt-1">{errors.trimestral}</p>}
+              </div>
+              <div>
+                <GradeInput
+                  label="Diversificada"
+                  value={thirdTrimesterDiversificada}
+                  onChange={setThirdTrimesterDiversificada}
+                  max={1}
+                />
+                {errors.diversificada && <p className="text-red-400 text-sm mt-1">{errors.diversificada}</p>}
+              </div>
+              <div>
+                <GradeInput
+                  label="Qualitativa"
+                  value={thirdTrimesterQualitativa}
+                  onChange={setThirdTrimesterQualitativa}
+                  max={1}
+                />
+                {errors.qualitativa && <p className="text-red-400 text-sm mt-1">{errors.qualitativa}</p>}
+              </div>
+              <div>
+                <GradeInput
+                  label="Simulado"
+                  value={thirdTrimesterSimulado}
+                  onChange={setThirdTrimesterSimulado}
+                  max={1}
+                />
+                {errors.simulado && <p className="text-red-400 text-sm mt-1">{errors.simulado}</p>}
+              </div>
             </div>
           </div>
 

@@ -76,7 +76,7 @@ export default function MinhasNotasPage() {
                   <p className={`text-sm font-semibold ${
                     entry.message.includes('PASSOU')
                       ? 'text-green-400'
-                      : entry.message.includes('ficou de recuperação no terceiro')
+                      : entry.message.includes('TRIMESTRE')
                       ? 'text-yellow-400'
                       : 'text-red-400'
                   }`}>

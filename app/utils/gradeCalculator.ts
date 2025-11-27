@@ -42,11 +42,11 @@ export function calculateGrades(
 
   // Verificação da lógica
   if (thirdTrimesterSum < 6) {
-    message = "ficou de recuperação no terceiro trimestre";
+    message = "FICOU DE RECUPERAÇÃO DO TRIMESTRE, VAI ESTUDAR KRL";
   } else if (totalScore < 60) {
-    message = "FICOU DE RECUPERAÇÂO NOOB";
+    message = "NOOB FICOU DE FINAL HAHAHAHAHAHAHAH";
   } else {
-    message = "PASSOU EM TUDO";
+    message = "VOCÊ PASSOU MUITO BEM PORRA";
   }
 
   return {

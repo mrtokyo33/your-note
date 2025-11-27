@@ -39,9 +39,28 @@ export default function Dashboard() {
       <AnimatedBackground />
       <div className="relative z-10 w-full h-screen p-8 flex flex-col">
         <div className="w-full flex-1 flex flex-col">
-          <h1 className="text-4xl md:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600 mb-8 text-center animate-pulse">
+          <h1 className="text-4xl md:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600 mb-2 text-center animate-pulse">
             Calculadora de Notas
           </h1>
+
+          {/* Legenda de Cores */}
+          <div className="mb-6 p-4 bg-white/5 backdrop-blur-md rounded-lg border border-purple-500/30 text-center">
+            <p className="text-xs md:text-sm text-gray-300 mb-3 font-semibold">Legenda de Resultados:</p>
+            <div className="flex flex-wrap justify-center gap-4 text-xs md:text-sm">
+              <div className="flex items-center gap-2">
+                <div className="w-3 h-3 rounded-full bg-green-500"></div>
+                <span className="text-gray-200">Verde = Passou</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
+                <span className="text-gray-200">Amarelo = Recuperação 3º Trimestre</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <div className="w-3 h-3 rounded-full bg-red-500"></div>
+                <span className="text-gray-200">Vermelho = Recuperação Final</span>
+              </div>
+            </div>
+          </div>
 
           <div className="space-y-6 flex-1 overflow-y-auto">
           {/* Primeiro Trimestre */}

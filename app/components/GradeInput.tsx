@@ -14,8 +14,12 @@ export function GradeInput({ label, value, onChange, max = 10, error }: GradeInp
   const [focused, setFocused] = useState(false);
 
   const handleChange = (e: string) => {
+    if (e === '') {
+      onChange(e);
+      return;
+    }
     const num = parseFloat(e);
-    if (isNaN(num) || num <= max || e === '') {
+    if (!isNaN(num) && num >= 0 && num <= max) {
       onChange(e);
     }
   };
