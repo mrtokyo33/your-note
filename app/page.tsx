@@ -1,5 +1,14 @@
-import Dashboard from "./pages/dashboard";
+'use client';
+
+import { useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 
 export default function Home() {
-  return <Dashboard />;
+  const router = useRouter();
+
+  useEffect(() => {
+    router.push('/formulario');
+  }, [router]);
+
+  return null;
 }
